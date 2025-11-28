@@ -1,70 +1,21 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Stockify Client - Interfaz de Gestión💻 DescripciónInterfaz gráfica (SPA - Single Page Application) del sistema ERP Stockify. Desarrollada en React 18, utiliza Material-UI v5 para garantizar la responsividad y usabilidad. La gestión del estado global (sesiones de usuario) se maneja mediante Context API, y la comunicación con el backend se realiza vía Axios con interceptores de seguridad.🛠️ Tecnologías ClaveCore: React 18UI Library: Material-UI (MUI) v5Routing: React Router DOMHTTP Client: Axios (Configurado en src/api)Gestión de Estado: React Context API (src/context)Build Tool: Webpack (vía CRA)📂 Estructura del ProyectoOrganizado por componentes funcionales y páginas, separado de la lógica de servicios:rg-plastic-frontend/
+├── public/
+├── src/
+│   ├── api/            # Configuración de Axios
+│   ├── components/     # Componentes reutilizables
+│   │   ├── common/     # Botones, Modales, Inputs genéricos
+│   │   ├── hhrr/       # Componentes específicos de RRHH
+│   │   ├── inventory/  # Tablas de stock, kárdex
+│   │   ├── production/ # Formularios de órdenes y mermas
+│   │   └── sales/      # Carrito de venta, cotizador
+│   ├── context/        # AuthContext, GlobalState
+│   ├── hooks/          # Custom hooks (useAuth, useFetch)
+│   ├── pages/          # Vistas principales (Rutas)
+│   ├── utils/          # Formateadores de moneda, fechas
+│   └── App.js          # Main Component
+└── package.json
+🚀 Instalación y Uso1. Instalación de Dependenciasnpm install
+2. Configuración de EntornoCrea un archivo .env en la raíz (o .env.local):REACT_APP_API_URL=http://localhost:3001/api/v1
+3. Servidor de DesarrolloPara trabajar en local con Hot Reload:npm start
+La aplicación correrá en http://localhost:3000.4. Construcción para Producción (Build)Genera la carpeta /build con los archivos estáticos optimizados para Nginx/Apache.npm run build
+👥 Manual de Usuario (Roles Principales)🛒 Ejecutivo de VentasCrear Pedido: Permite seleccionar cliente (con validación de límite de crédito) y agregar productos verificando stock en tiempo real.Estados: Los pedidos nacen como QUOTE y pasan a CONFIRMED para producción.🏭 Jefe de ProducciónÓrdenes (OP): Planificación de manufactura.Registro de Mermas: Interfaz para reportar desperdicios en Extrusión o Bolseo.Consumos: Descuenta materia prima del inventario automáticamente.📦 Encargado de AlmacénEntradas: Registro de mercancía referenciada a factura de proveedor.Alertas: Visualización de tarjetas rojas en el Dashboard cuando el stock cae bajo el mínimo.💰 Analista FinancieroCosteo: Cálculo automático del costo real (Materiales + Mano de Obra + Mermas) vs Precio de Venta para análisis de rentabilidad por cliente.🧪 Validaciones (QA)El frontend implementa validaciones de formulario estrictas para asegurar la integridad de datos antes de enviarlos al servidor:Validación de RUT/ID fiscal.Stock no negativo en ventas (alerta visual).Bloqueo de ventas a clientes morosos.

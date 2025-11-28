@@ -10,6 +10,10 @@
 
 # production
 /build
+/dist
+
+# Archivos de Testing y Cobertura
+/coverage
 
 # misc
 .DS_Store
