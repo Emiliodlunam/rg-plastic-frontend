@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f6f8;
+}
+
+/* Estilos para NavLink activo en la Sidebar */
+a.active {
+  background-color: #1976d2; /* Color primario de MUI */
+  color: white !important;
+}
+
+a.active .MuiListItemIcon-root, 
+a.active .MuiListItemText-root {
+  color: white !important;
+}
